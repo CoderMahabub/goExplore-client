@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import usePackages from '../../hooks/usePackages';
 import { useForm } from "react-hook-form";
@@ -14,8 +14,16 @@ const Booking = () => {
     const { user } = useAuth();
 
     // React Hook Form
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        fetch(`http://localhost:5000/addOrders`, {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+        })
+            .then(res => res.json())
+            .then(result => console.log(result))
+    };
 
     return (
         <div className="container booking py-5">
@@ -25,19 +33,23 @@ const Booking = () => {
                 <Container>
                     <Row>
                         <Col className="border p-3">
-                            <h2 className="text-success pb-2"><u>Package Detail</u></h2>
-                            <label htmlFor="pName">Package: </label>
-                            <input defaultValue={singlePackage?.pTitle} {...register("pTitle")} id="pTitle" />
-                            <br />
-                            <label htmlFor="pDuration">Duration: </label>
-                            <input defaultValue={singlePackage?.pDuration} {...register("pDuration")} id="pDuration" />
+                            {(packages.length !== 0) &&
+                                <div>
+                                    <h2 className="text-success pb-2"><u>Package Detail</u></h2>
+                                    <label htmlFor="pTitle">Package: </label>
+                                    <input defaultValue={singlePackage?.pTitle} {...register("pTitle")} id="pTitle" />
+                                    <br />
+                                    <label htmlFor="pDuration">Duration: </label>
+                                    <input defaultValue={singlePackage?.pDuration} {...register("pDuration")} id="pDuration" />
 
-                            <br />
-                            <label htmlFor="pCost">Payable : </label>
-                            <input defaultValue={singlePackage?.pCost} {...register("pCost")} id="pCost" />
-                            <br />
-                            <label htmlFor="pLocation">Location : </label>
-                            <input defaultValue={singlePackage?.pLocation} {...register("pLocation")} id="pLocation" />
+                                    <br />
+                                    <label htmlFor="pCost">Payable : </label>
+                                    <input defaultValue={singlePackage?.pCost} {...register("pCost")} id="pCost" />
+                                    <br />
+                                    <label htmlFor="pLocation">Location : </label>
+                                    <input defaultValue={singlePackage?.pLocation} {...register("pLocation")} id="pLocation" />
+                                </div>
+                            }
                         </Col>
                         <Col className="border p-3">
                             <h2 className="text-success pb-2"><u>Customer Detail</u></h2>
@@ -52,12 +64,12 @@ const Booking = () => {
                             <input placeholder="Phone Number" {...register("cPhone", { required: true })} id="cPhone" />
 
                             <br />
-                            <label htmlFor="cAddress">Customer Address: </label>
+                            <label htmlFor="cAddress">Customer Adress: </label>
                             <input placeholder="Please Type Your Address" {...register("cAddress", { required: true })} id="cAddress" />
                         </Col>
                     </Row>
                 </Container>
-                {errors.cPhone && <span className="text-danger fw-bold fs-5">Phone Number is required</span>}
+                {errors.cPhone && <span className="text-danger fw-bold fs-5">Phone Number is required</span>} <br />
                 {errors.cAddress && <span className="text-danger fw-bold fs-5">Address is required</span>}
                 <br />
                 <div className="hidden-field">
@@ -67,6 +79,7 @@ const Booking = () => {
             </form>
         </div>
     );
+
 };
 
 export default Booking;
