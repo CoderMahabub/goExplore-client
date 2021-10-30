@@ -16,8 +16,8 @@ const Login = () => {
             })
     }
     return (
-        <div>
-            <h1>LogIn Here</h1>
+        <div className="my-5">
+            <h1 className="text-success"><u>Click the button to login</u></h1>
             <div>=======================</div>
             {/* <button onClick={googleSignIn}>Google Login</button> */}
 

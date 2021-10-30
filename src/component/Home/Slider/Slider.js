@@ -14,7 +14,7 @@ const Slider = () => {
                         src={slideOne}
                         alt="First slide"
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption className="text-success fw-bold">
                         <h1>Travel With Us For The Best Deal</h1>
                         <p>We are an Award Winning Travel Agent</p>
                     </Carousel.Caption>
@@ -25,7 +25,7 @@ const Slider = () => {
                         src={slideTwo}
                         alt="Second slide"
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption className="text-success fw-bold">
                         <h1>We have 10 years of experience in this field.</h1>
                         <p>With more than 1000 employees across the globe.</p>
                     </Carousel.Caption>
@@ -36,7 +36,7 @@ const Slider = () => {
                         src={slideThree}
                         alt="Third slide"
                     />
-                    <Carousel.Caption>
+                    <Carousel.Caption className="text-warning fw-bold">
                         <h1>Travel With Us For The Best Deal</h1>
                         <p>We are an Award Winning Travel Agent</p>
                     </Carousel.Caption>

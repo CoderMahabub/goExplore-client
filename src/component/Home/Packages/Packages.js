@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import Package from './Package/Package';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
+import usePackages from '../../../hooks/usePackages';
+
 
 const Packages = () => {
     const direction = <FontAwesomeIcon icon={faArrowAltCircleDown} />
 
-    const [packages, setPackages] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/packages')
-            .then(res => res.json())
-            .then(data => setPackages(data))
-    }, [])
+    const [packages] = usePackages();
     return (
         <div className="container my-5">
-            <h1 className="bg-success text-light fw-bold py-2">Most Popular Packages {direction}</h1>
+            <h1 className="bg-success text-light fw-bold py-2 my-3">Most Popular Packages {direction}</h1>
             <Row xs={1} md={3} className="g-4">
                 {
                     packages.map(sPackage => <Package

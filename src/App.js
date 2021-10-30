@@ -3,11 +3,14 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './component/Header/Header';
 import Home from './component/Home/Home';
 import Login from './component/Login/Login';
-import Book from './component/Book/Book';
-import Order from './component/Order/Order';
+import Booking from './component/Booking/Booking';
+import MyOrder from './component/MyOrder/MyOrder';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 import About from './component/About/About';
+import Footer from './component/Footer/Footer';
+import NotFound from './component/NotFound/NotFound';
+
 
 function App() {
   return (
@@ -25,16 +28,20 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
-            <PrivateRoute path="/book">
-              <Book></Book>
+            <PrivateRoute path="/bookPackage/:_id">
+              <Booking></Booking>
             </PrivateRoute>
-            <PrivateRoute path="/order">
-              <Order></Order>
+            <PrivateRoute path="/myOrder">
+              <MyOrder></MyOrder>
             </PrivateRoute>
             <Route path="/about">
               <About></About>
             </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
     </div>

@@ -1,4 +1,4 @@
-# The Car Doctor
+# goExplore the World!
 
 #### Live Site: [goExplore](link).
 #### Live Server: [goExplore](link).

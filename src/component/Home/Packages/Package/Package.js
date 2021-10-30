@@ -2,12 +2,12 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faTags } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 
 const Package = ({ sPackage }) => {
     const duration = <FontAwesomeIcon icon={faClock} />
     const priceTag = <FontAwesomeIcon icon={faTags} />
-
-    const { pThumbnail, pTitle, pDuration, pDescription, pCost } = sPackage;
+    const { _id, pThumbnail, pTitle, pDuration, pDescription, pCost } = sPackage;
     return (
         <div className="text-start">
             <Col>
@@ -21,7 +21,9 @@ const Package = ({ sPackage }) => {
                         </Card.Text>
                     </Card.Body>
                     <div className="d-flex justify-content-between align-items-center px-2">
-                        <button className="btn btn-primary fw-bold">Book Now!</button>
+                        <Link to={`/bookPackage/${_id}`}>
+                            <button className="btn btn-primary fw-bold">Book Now!</button>
+                        </Link>
                         <span className="text-secondary">{priceTag} <span className="text-primary fw-bold fs-5 ms-1">{pCost}</span></span>
                     </div>
                 </Card>

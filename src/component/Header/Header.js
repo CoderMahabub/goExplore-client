@@ -9,7 +9,7 @@ const Header = () => {
     const { user, handleLogout } = useAuth();
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" sticky="top" className="border border-secondary border-top-0 border-start-0 border-end-0 bg-dark text-light fs-4">
+            <Navbar collapseOnSelect expand="lg" sticky="top" className="border border-secondary border-top-0 border-start-0 border-end-0 bg-dark text-light fs-5">
                 <Container>
                     <div className="d-flex align-items-center justify-content-center">
                         <Navbar.Brand as={HashLink} to="/home">
