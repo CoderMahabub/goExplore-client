@@ -8,7 +8,7 @@ const UpdateOrder = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        fetch(`http://localhost:5000/update/${orderId}`, {
+        fetch(`https://serene-shore-87572.herokuapp.com/update/${orderId}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data),
@@ -19,7 +19,7 @@ const UpdateOrder = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleOrder/${orderId}`)
+        fetch(`https://serene-shore-87572.herokuapp.com/singleOrder/${orderId}`)
             .then(res => res.json())
             .then(data => setUpdateItem(data))
     }, [])

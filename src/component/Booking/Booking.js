@@ -16,7 +16,7 @@ const Booking = () => {
     // React Hook Form
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch(`http://localhost:5000/addOrders`, {
+        fetch(`https://serene-shore-87572.herokuapp.com/addOrders`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data),

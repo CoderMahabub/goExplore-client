@@ -14,7 +14,7 @@ const ManageOrders = () => {
 
     // Delete My Bookings
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteBooking/${id}`, {
+        fetch(`https://serene-shore-87572.herokuapp.com/deleteBooking/${id}`, {
             method: 'DELETE',
             headers: { 'content-type': 'application/json' },
         }).then(res => res.json())
