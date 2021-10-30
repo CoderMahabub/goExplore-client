@@ -7,8 +7,8 @@ import usePackages from '../../../hooks/usePackages';
 
 const Packages = () => {
     const direction = <FontAwesomeIcon icon={faArrowAltCircleDown} />
-
     const [packages] = usePackages();
+
     return (
         <div className="container my-5">
             <h1 className="bg-success text-light fw-bold py-2 my-3">Most Popular Packages {direction}</h1>

@@ -7,6 +7,7 @@ initializeAuthentication();
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -14,19 +15,17 @@ const useFirebase = () => {
         //return for Redirect to the initial page after login
         return signInWithPopup(auth, googleProvider)
 
-        //Normal Login
-        // signInWithPopup(auth, googleProvider)
-        //     .then(result => {
-        //         setUser(result.user);
-        //     })
     }
 
-    // Observe wheather user auth state changed or not
+    // Observe whether user auth state changed or not
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+            } else {
+                setUser({});
             }
+            setLoading(false);
         });
         return unsubscribe;
     }, [])
@@ -42,14 +41,13 @@ const useFirebase = () => {
             });
     }
 
-
-
     //Returns
     return {
         googleSignIn,
         user,
         error,
-        handleLogout
+        handleLogout,
+        loading
     }
 }
 export default useFirebase;
