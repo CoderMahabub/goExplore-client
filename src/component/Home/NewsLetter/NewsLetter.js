@@ -3,15 +3,13 @@ import './NewsLetter.css';
 
 const NewsLetter = () => {
     return (
-        <div className="news-letter">
-            <div className="w-50 mx-auto">
-                <h2 className="fw-bold text-info">Subscribe Our Newsletter</h2>
+        <div className="news-letter container">
+            <div className="mx-auto">
+                <h2 className="fw-bold fs-1 text-primary">Subscribe Our Newsletter</h2>
                 <p>If you want to know latest Tour Packages, Don't forget to Subscribe</p>
-                <div className="input-group mb-3 container w-50 mx-auto">
-                    <input type="text" className="col-md-6 form-control" placeholder="Type Your Email" />
-                    <div className="input-group-append">
-                        <button className="btn btn-lg btn-info fw-bold mt-1" type="button">Subscribe</button>
-                    </div>
+                <div className="">
+                    <input className="py-1 px-3" type="email" placeholder="Your Email" />
+                    <input className="btn btn-success" type="submit" value="Submit" />
                 </div>
             </div>
         </div>
