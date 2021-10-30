@@ -11,6 +11,7 @@ import About from './component/About/About';
 import Footer from './component/Footer/Footer';
 import NotFound from './component/NotFound/NotFound';
 import ManageOrders from './component/ManageOrders/ManageOrders';
+import UpdateOrder from './component/UpdateOrder/UpdateOrder';
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
             </PrivateRoute>
             <PrivateRoute path="/manageAllOrders">
               <ManageOrders></ManageOrders>
+            </PrivateRoute>
+            <PrivateRoute path="/update/:orderId">
+              <UpdateOrder></UpdateOrder>
             </PrivateRoute>
             <Route path="/about">
               <About></About>

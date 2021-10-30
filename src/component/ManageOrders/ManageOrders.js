@@ -28,8 +28,8 @@ const ManageOrders = () => {
     }
     return (
         <div className="py-5">
-            <h1 className="text-primary fw-bold pb-3"><u>Manage Orders</u><span className="fs-6 text-success">(<b>as Admin:</b> {user.displayName})</span></h1>
-            <table class="table table-striped table-bordered table-hover">
+            <h1 className="text-primary fw-bold pb-3"><u>Manage Orders</u><span className="fs-6 text-success">(<b>as Admin:</b> {user?.displayName})</span></h1>
+            <table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -46,19 +46,20 @@ const ManageOrders = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(booking => <tr>
+                        orders.map(booking => <tr
+                            key={booking._id}>
                             <th scope="row">{booking._id}</th>
-                            <td>{booking.cName}</td>
-                            <td>{booking.cEmail}</td>
-                            <td>{booking.cPhone}</td>
-                            <td>{booking.pTitle}</td>
-                            <td>{booking.pDuration}</td>
-                            <td>{booking.pLocation}</td>
-                            <td>{booking.pCost}</td>
-                            <td>{booking.status}</td>
+                            <td>{booking?.cName}</td>
+                            <td>{booking?.cEmail}</td>
+                            <td>{booking?.cPhone}</td>
+                            <td>{booking?.pTitle}</td>
+                            <td>{booking?.pDuration}</td>
+                            <td>{booking?.pLocation}</td>
+                            <td>{booking?.pCost}</td>
+                            <td>{booking?.status}</td>
                             <td>
-                                <button onClick={() => handleDelete(booking._id)} className="btn btn-danger me-1">Cancel Book</button>
-                                <Link to={`/update/${booking._id}`}>
+                                <button onClick={() => handleDelete(booking?._id)} className="btn btn-danger me-1">Cancel Book</button>
+                                <Link to={`/update/${booking?._id}`}>
                                     <button className="btn btn-warning">Update Status</button>
                                 </Link>
                             </td>
