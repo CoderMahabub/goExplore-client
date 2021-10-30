@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 
-const MyOrder = () => {
+const ManageOrders = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     useEffect(() => {
@@ -9,15 +9,12 @@ const MyOrder = () => {
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
-
-    const bookings = orders?.filter(order => order.cEmail === user.email);
-
     return (
         <div className="py-5">
-            <h1 className="">My Orders</h1>
-            <table class="table table-striped">
+            <h1 className="text-primary fw-bold pb-3"><u>Manage Orders</u><span className="fs-6 text-success">(<b>as Admin:</b> {user.displayName})</span></h1>
+            <table class="table table-striped table-bordered">
                 <thead>
-                    <tr className="border">
+                    <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Customer Email</th>
@@ -27,12 +24,12 @@ const MyOrder = () => {
                         <th scope="col">Destination</th>
                         <th scope="col">Cost</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        bookings.map(booking => <tr>
+                        orders.map(booking => <tr>
                             <th scope="row">{booking._id}</th>
                             <td>{booking.cName}</td>
                             <td>{booking.cEmail}</td>
@@ -42,7 +39,10 @@ const MyOrder = () => {
                             <td>{booking.pLocation}</td>
                             <td>{booking.pCost}</td>
                             <td>{booking.status}</td>
-                            <td><button className="btn btn-warning">Cancel Book</button></td>
+                            <td>
+                                <button className="btn btn-danger me-1">Cancel Book</button>
+                                <button className="btn btn-warning">Update Status</button>
+                            </td>
                         </tr>)
                     }
                 </tbody>
@@ -51,4 +51,4 @@ const MyOrder = () => {
     );
 };
 
-export default MyOrder;
+export default ManageOrders;

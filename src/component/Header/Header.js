@@ -28,7 +28,7 @@ const Header = () => {
                         {user.displayName &&
                             <>
                                 <Nav.Link className="text-light" as={HashLink} to="/myOrder">My Orders</Nav.Link>
-                                <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Order</Nav.Link>
+                                <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Orders</Nav.Link>
 
                                 <span className="fw-bold text-warning"> {user.displayName} </span>
                             </>}
