@@ -7,12 +7,12 @@ import Booking from './component/Booking/Booking';
 import MyOrder from './component/MyOrder/MyOrder';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './component/PrivateRoute/PrivateRoute';
-import About from './component/About/About';
 import Footer from './component/Footer/Footer';
 import NotFound from './component/NotFound/NotFound';
 import ManageOrders from './component/ManageOrders/ManageOrders';
 import UpdateOrder from './component/UpdateOrder/UpdateOrder';
 import AddPackage from './component/AddPackage/AddPackage';
+import Contact from './component/Contact/Contact';
 
 
 function App() {
@@ -46,8 +46,8 @@ function App() {
             <PrivateRoute path="/addPackage">
               <AddPackage></AddPackage>
             </PrivateRoute>
-            <Route path="/about">
-              <About></About>
+            <Route path="/contact">
+              <Contact></Contact>
             </Route>
             <Route path="*">
               <NotFound></NotFound>

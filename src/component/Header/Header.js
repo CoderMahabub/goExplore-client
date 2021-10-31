@@ -30,19 +30,20 @@ const Header = () => {
                     </div>
                     <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                         <Nav.Link className="text-light" as={HashLink} to="/home">Home</Nav.Link>
-                        {user.displayName &&
-                            <>
-                                <Nav.Link className="text-light" as={HashLink} to="/myOrder">My Orders</Nav.Link>
-                                <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Orders</Nav.Link>
-                                <Nav.Link className="text-light" as={HashLink} to="/addPackage">Manage Packages</Nav.Link>
-                                {(user.photoURL) && <img className="header-photo mx-2" src={user.photoURL} alt="user" />}
-                                <span className="fw-bold text-warning"> {user.displayName} </span>
-                            </>}
-                        {
-                            user.email ?
-                                <button className="btn btn-sm btn-light fw-bold ms-2" onClick={handleLogout}> Sign Out {signOut}</button>
-                                : <Nav.Link as={HashLink} to="/login"><button className="btn btn-sm btn-light fw-bold">LogIn {signIn}</button></Nav.Link>
-                        }
+                        {user.displayName && <>
+                            <Nav.Link className="text-light" as={HashLink} to="/myOrder">My Orders</Nav.Link>
+                            <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Orders</Nav.Link>
+                            <Nav.Link className="text-light" as={HashLink} to="/addPackage">Manage Packages</Nav.Link>
+                        </>}
+                        <Nav.Link className="text-light" as={HashLink} to="/contact">Contact</Nav.Link>
+                        {user.displayName && <>
+                            {(user.photoURL) && <img className="header-photo mx-2" src={user.photoURL} alt="user" />}
+                            <span className="fw-bold text-warning"> {user.displayName} </span>
+                        </>}
+
+                        {user.email ?
+                            <button className="btn btn-sm btn-light fw-bold ms-2" onClick={handleLogout}> Sign Out {signOut}</button>
+                            : <Nav.Link as={HashLink} to="/login"><button className="btn btn-sm btn-light fw-bold">LogIn {signIn}</button></Nav.Link>}
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
