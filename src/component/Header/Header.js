@@ -4,8 +4,13 @@ import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../hooks/useAuth';
 import logo from '../../images/logo.png';
 import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
+    const signIn = <FontAwesomeIcon icon={faSignInAlt} />
+    const signOut = <FontAwesomeIcon icon={faSignOutAlt} />
+
     const { user, handleLogout } = useAuth();
     return (
         <div>
@@ -35,8 +40,8 @@ const Header = () => {
                             </>}
                         {
                             user.email ?
-                                <button className="btn btn-sm btn-secondary ms-2" onClick={handleLogout}> Sign Out</button>
-                                : <Nav.Link as={HashLink} to="/login">LogIn</Nav.Link>
+                                <button className="btn btn-sm btn-light fw-bold ms-2" onClick={handleLogout}> Sign Out {signOut}</button>
+                                : <Nav.Link as={HashLink} to="/login"><button className="btn btn-sm btn-light fw-bold">LogIn {signIn}</button></Nav.Link>
                         }
                     </Navbar.Collapse>
                 </Container>
