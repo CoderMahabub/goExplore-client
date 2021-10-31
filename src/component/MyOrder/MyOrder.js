@@ -36,9 +36,9 @@ const MyOrder = () => {
     }
 
     return (
-        <div className="table-responsive py-5">
+        <div className="py-5">
             <h1 className="text-primary fw-bold pb-3"><u>My Orders</u></h1>
-            {(orders.length !== 0) ? <table className="table table-striped table-bordered table-hover">
+            {(orders.length !== 0) ? <div className="table-responsive"><table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr className="border">
                         <th scope="col">Customer Name</th>
@@ -67,7 +67,8 @@ const MyOrder = () => {
                         </tr>)
                     }
                 </tbody>
-            </table> : <Spinner animation="border" variant="info" />}
+            </table>
+            </div> : <Spinner animation="border" variant="info" />}
         </div>
     );
 };

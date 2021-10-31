@@ -36,9 +36,9 @@ const ManageOrders = () => {
         }
     }
     return (
-        <div className="table-responsive py-5">
+        <div className="py-5">
             <h1 className="text-primary fw-bold pb-3"><u>Manage Orders</u><span className="fs-6 text-success">(<b>as Admin:</b> {user?.displayName})</span></h1>
-            {(orders.length !== 0) ? <table className="table table-striped table-bordered table-hover">
+            {(orders.length !== 0) ? <div className="table-responsive"><table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Customer Name</th>
@@ -73,7 +73,8 @@ const ManageOrders = () => {
                         </tr>)
                     }
                 </tbody>
-            </table> : <Spinner animation="border" variant="info" />}
+            </table>
+            </div> : <Spinner animation="border" variant="info" />}
         </div>
     );
 };

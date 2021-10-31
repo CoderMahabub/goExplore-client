@@ -87,30 +87,40 @@ const AddPackage = () => {
             <div className="packages my-5">
                 <h1 className="text-success fw-bold my-4"><u>Manage Existing Packages</u></h1>
 
-                {(packages.length !== 0) ? <Container className="border border-dark">
-                    <Row className="bg-dark text-info fw-bold">
-                        <Col className="single-column lgOne border p-1">Package</Col>
-                        <Col className="single-column lgOne border p-1">Duration</Col>
-                        <Col className="single-column lgOne border p-1">Photo Link</Col>
-                        <Col className="single-column smallOne border p-1">Price</Col>
-                        <Col className="single-column smallOne border p-1">Destination</Col>
-                        <Col className="single-column smallOne border p-1">Available</Col>
-                        <Col className="single-column smallOne border p-1">Action</Col>
-                    </Row>
-                    {
-                        packages.map(sPackage => <Row
-                            key={sPackage._id}
-                            className="bg-secondary text-light"
-                        ><Col className="single-column lgOne border p-1">{sPackage.pTitle}</Col>
-                            <Col className="single-column lgOne border p-1">{sPackage.pDuration}</Col>
-                            <Col className="single-column lgOne border p-1">{sPackage.pThumbnail}</Col>
-                            <Col className="single-column smallOne border p-1">{sPackage.pCost}</Col>
-                            <Col className="single-column smallOne border p-1">{sPackage.pLocation}</Col>
-                            <Col className="single-column smallOne border p-1">{sPackage.pSeats}</Col>
-                            <Col className="single-column smallOne border p-1"><button onClick={() => handleDelete(sPackage._id)} className="btn btn-warning">{cancel}</button></Col>
-                        </Row>)
-                    }
-                </Container> : <Spinner animation="border" variant="success" />}
+
+
+
+
+
+
+                {(packages.length !== 0) ? <div className="table-responsive"><table className="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr className="border">
+                            <th scope="col">Package</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Photo Link</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Available Package</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            packages.map(sPackage => <tr key={sPackage._id}>
+                                <th scope="row">{sPackage.pTitle}</th>
+                                <td>{sPackage.pDuration}</td>
+                                <td>{sPackage.pThumbnail}</td>
+                                <td>{sPackage.pLocation}</td>
+                                <td>{sPackage.pSeats}</td>
+                                <td><button onClick={() => handleDelete(sPackage._id)} className="btn btn-danger">Cancel {cancel}</button></td>
+                            </tr>)
+                        }
+                    </tbody>
+                </table>
+                </div> : <Spinner animation="border" variant="info" />}
+
+
+
             </div>
         </>
     );
