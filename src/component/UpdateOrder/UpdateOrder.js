@@ -26,7 +26,7 @@ const UpdateOrder = () => {
             .then(data => setUpdateItem(data))
     }, [updateItem])
     return (
-        <div className="py-5">
+        <div className="table-responsive py-5">
             <h1 className=""><b>Hi</b>, <span className="text-primary">{updateItem?.cName}</span></h1>
             <p>You are updating Booking Status for order package given bellow..</p>
             <table className="table table-bordered container mb-5">
