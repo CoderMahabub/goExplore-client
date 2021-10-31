@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClock, faTags } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock, faTags } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const Package = ({ sPackage }) => {
