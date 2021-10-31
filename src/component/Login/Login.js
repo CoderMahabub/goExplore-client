@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../hooks/useAuth';
 
+
 const Login = () => {
     const { googleSignIn } = useAuth();
 
@@ -19,7 +20,6 @@ const Login = () => {
         <div className="my-5">
             <h1 className="text-success"><u>Click the button to login</u></h1>
             <div>=======================</div>
-            {/* <button onClick={googleSignIn}>Google Login</button> */}
 
             {/* THis is for Redirect to the initial page after login */}
             <button onClick={handleGoogleLogIn}>

@@ -9,7 +9,7 @@ const NewsLetter = () => {
                 <p>If you want to know latest Tour Packages, Don't forget to Subscribe</p>
                 <div className="">
                     <input className="py-1 px-3" type="email" placeholder="Your Email" />
-                    <input className="btn btn-success" type="submit" value="Submit" />
+                    <input className="btn btn-success" type="submit" value="Subscribe" />
                 </div>
             </div>
         </div>

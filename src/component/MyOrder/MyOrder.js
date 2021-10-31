@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Spinner } from 'react-bootstrap';
 
 const MyOrder = () => {
+    const cancel = <FontAwesomeIcon icon={faTrash} />
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     const [isDeleted, setIsDeleted] = useState(null);
@@ -15,23 +19,26 @@ const MyOrder = () => {
 
     // Delete My Bookings
     const handleDelete = (id) => {
-        fetch(`https://serene-shore-87572.herokuapp.com/deleteBooking/${id}`, {
-            method: 'DELETE',
-            headers: { 'content-type': 'application/json' },
-        }).then(res => res.json())
-            .then(result => {
-                if (result.deletedCount) {
-                    setIsDeleted(true)
-                } else {
-                    setIsDeleted(false)
-                }
-            })
+        const proceed = window.confirm('Are you sure, You want to Cancel the Booking?');
+        if (proceed) {
+            fetch(`https://serene-shore-87572.herokuapp.com/deleteBooking/${id}`, {
+                method: 'DELETE',
+                headers: { 'content-type': 'application/json' },
+            }).then(res => res.json())
+                .then(result => {
+                    if (result.deletedCount) {
+                        setIsDeleted(true)
+                    } else {
+                        setIsDeleted(false)
+                    }
+                })
+        }
     }
 
     return (
         <div className="table-responsive py-5">
-            <h1 className="">My Orders</h1>
-            <table className="table table-striped table-bordered table-hover">
+            <h1 className="text-primary fw-bold pb-3"><u>My Orders</u></h1>
+            {(orders.length !== 0) ? <table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr className="border">
                         <th scope="col">ID</th>
@@ -50,19 +57,19 @@ const MyOrder = () => {
                     {
                         bookings.map(booking => <tr key={booking._id}>
                             <th scope="row">{booking._id}</th>
-                            <td>{booking.cName}</td>
-                            <td>{booking.cEmail}</td>
-                            <td>{booking.cPhone}</td>
-                            <td>{booking.pTitle}</td>
-                            <td>{booking.pDuration}</td>
-                            <td>{booking.pLocation}</td>
-                            <td>{booking.pCost}</td>
-                            <td>{booking.status}</td>
-                            <td><button onClick={() => handleDelete(booking._id)} className="btn btn-danger">Cancel Book</button></td>
+                            <td>{booking?.cName}</td>
+                            <td>{booking?.cEmail}</td>
+                            <td>{booking?.cPhone}</td>
+                            <td>{booking?.pTitle}</td>
+                            <td>{booking?.pDuration}</td>
+                            <td>{booking?.pLocation}</td>
+                            <td>{booking?.pCost}</td>
+                            <td>{booking?.status}</td>
+                            <td><button onClick={() => handleDelete(booking._id)} className="btn btn-danger">Cancel {cancel}</button></td>
                         </tr>)
                     }
                 </tbody>
-            </table>
+            </table> : <Spinner animation="border" variant="info" />}
         </div>
     );
 };

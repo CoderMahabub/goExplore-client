@@ -29,7 +29,7 @@ const Header = () => {
                             <>
                                 <Nav.Link className="text-light" as={HashLink} to="/myOrder">My Orders</Nav.Link>
                                 <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Orders</Nav.Link>
-
+                                {(user.photoURL) && <img className="header-photo me-1" src={user.photoURL} alt="user" />}
                                 <span className="fw-bold text-warning"> {user.displayName} </span>
                             </>}
                         {

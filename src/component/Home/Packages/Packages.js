@@ -19,7 +19,7 @@ const Packages = () => {
                         sPackage={sPackage}
                     ></Package>)
                 }
-            </Row> : <Spinner animation="border" variant="success" />}
+            </Row> : <div><Spinner className="text-center" animation="border" variant="success" /></div>}
         </div>
     );
 };

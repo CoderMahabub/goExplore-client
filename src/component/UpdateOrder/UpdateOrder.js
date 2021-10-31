@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateOrder = () => {
     const { orderId } = useParams();
     const [updateItem, setUpdateItem] = useState({});
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data)
         fetch(`https://serene-shore-87572.herokuapp.com/update/${orderId}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
@@ -15,6 +16,8 @@ const UpdateOrder = () => {
         }).then(res => res.json())
             .then(result => {
                 console.log(result);
+                reset();
+                toast.success("Status Updated Successfully");
             })
     };
 
@@ -22,7 +25,7 @@ const UpdateOrder = () => {
         fetch(`https://serene-shore-87572.herokuapp.com/singleOrder/${orderId}`)
             .then(res => res.json())
             .then(data => setUpdateItem(data))
-    }, [])
+    }, [updateItem])
     return (
         <div className="py-5">
             <h1 className=""><b>Hi</b>, <span className="text-primary">{updateItem?.cName}</span></h1>
@@ -38,19 +41,20 @@ const UpdateOrder = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className="bg-warning">
+                    <tr className="bg-secondary text-light">
                         <th scope="row">{updateItem?.cName}</th>
                         <td>{updateItem?.pTitle}</td>
                         <td>{updateItem?.pDuration}</td>
                         <td>{updateItem?.pLocation}</td>
-                        <td className="bg-light">{updateItem?.status}</td>
+                        <td className="bg-warning text-dark fw-bold">{updateItem?.status}</td>
                     </tr>
                 </tbody>
             </table>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {(updateItem.status) && <input className="px-2 py-1 fw-bold" defaultValue={updateItem?.status} {...register("status")} />}
+                {(updateItem?.status) && <input className="px-2 py-1 fw-bold" defaultValue={updateItem?.status} {...register("status")} />}
                 <input className="btn btn-success" type="submit" value="Update Status" />
             </form>
+            <ToastContainer />
         </div >
     );
 };

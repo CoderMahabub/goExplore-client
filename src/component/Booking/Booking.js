@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import './Booking.css';
 import useAuth from '../../hooks//useAuth';
 import { Col, Container, Row } from 'react-bootstrap';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Booking = () => {
@@ -23,6 +25,11 @@ const Booking = () => {
         })
             .then(res => res.json())
             .then(result => console.log(result))
+        reset();
+        toast.success("Booking Done Successfully", {
+            position: "top-right"
+        });
+
     };
 
     return (
@@ -77,6 +84,7 @@ const Booking = () => {
                 </div>
                 <input className="btn btn-lg btn-success mt-3 text-light" type="submit" />
             </form>
+            <ToastContainer />
         </div>
     );
 
