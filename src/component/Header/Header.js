@@ -29,7 +29,8 @@ const Header = () => {
                             <>
                                 <Nav.Link className="text-light" as={HashLink} to="/myOrder">My Orders</Nav.Link>
                                 <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Orders</Nav.Link>
-                                {(user.photoURL) && <img className="header-photo me-1" src={user.photoURL} alt="user" />}
+                                <Nav.Link className="text-light" as={HashLink} to="/addPackage">Add Package</Nav.Link>
+                                {(user.photoURL) && <img className="header-photo mx-2" src={user.photoURL} alt="user" />}
                                 <span className="fw-bold text-warning"> {user.displayName} </span>
                             </>}
                         {
@@ -40,29 +41,6 @@ const Header = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
-
-
-
-
-
-
-
-
-
-
-            {/* <div className="header-items">
-                <Link to="/home">Home</Link>
-                <Link to="/book">Booking</Link>
-                <Link to="/order">Order</Link>
-                <Link to="/about">About</Link>
-                {user.displayName && <span style={{ color: 'white' }}>Hello {user.displayName} </span>}
-                {
-                    user.email ?
-                        <button onClick={handleLogout}>Sign Out</button>
-                        : <Link to="/login">LogIn</Link>
-                }
-            </div> */}
         </div>
     );
 };

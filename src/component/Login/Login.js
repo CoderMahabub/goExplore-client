@@ -17,13 +17,9 @@ const Login = () => {
             })
     }
     return (
-        <div className="my-5">
-            <h1 className="text-success"><u>Click the button to login</u></h1>
-            <div>=======================</div>
-
-            {/* THis is for Redirect to the initial page after login */}
-            <button onClick={handleGoogleLogIn}>
-                <img src="https://i.ibb.co/VtvJ2km/2dywpzc.png" alt="Login With Google" />
+        <div className="container my-5">
+            <button className="my-5" onClick={handleGoogleLogIn}>
+                <img className="img-fluid" src="https://i.ibb.co/VtvJ2km/2dywpzc.png" alt="Login With Google" />
             </button>
         </div>
     );
