@@ -17,7 +17,6 @@ const MyOrder = () => {
     }, [isDeleted])
     const bookings = orders?.filter(order => order.cEmail === user.email);
 
-
     // Delete My Bookings
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you sure, You want to Cancel the Booking?');
@@ -42,7 +41,6 @@ const MyOrder = () => {
             {(orders.length !== 0) ? <table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr className="border">
-                        <th scope="col">ID</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Customer Email</th>
                         <th scope="col">Customer Phone</th>
@@ -57,8 +55,7 @@ const MyOrder = () => {
                 <tbody>
                     {
                         bookings.map(booking => <tr key={booking._id}>
-                            <th scope="row">{booking._id}</th>
-                            <td>{booking?.cName}</td>
+                            <th scope="row">{booking?.cName}</th>
                             <td>{booking?.cEmail}</td>
                             <td>{booking?.cPhone}</td>
                             <td>{booking?.pTitle}</td>

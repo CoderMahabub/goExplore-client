@@ -76,13 +76,12 @@ const Booking = () => {
                         </Col>
                     </Row>
                 </Container>
-                {errors.cPhone && <span className="text-danger fw-bold fs-5">Phone Number is required</span>} <br />
-                {errors.cAddress && <span className="text-danger fw-bold fs-5">Address is required</span>}
+                {(errors.cPhone || errors.cAddress) && <span className="text-danger fw-bold fs-5">All the fields are required!</span>} <br />
                 <br />
                 <div className="hidden-field">
                     <input defaultValue="Pending" {...register("status")} />
                 </div>
-                <input className="btn btn-lg btn-success mt-3 text-light" type="submit" />
+                <input className="btn btn-lg btn-success text-light" type="submit" value="Click to Book" />
             </form>
             <ToastContainer />
         </div>

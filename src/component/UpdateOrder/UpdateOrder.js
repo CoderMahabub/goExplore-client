@@ -16,9 +16,8 @@ const UpdateOrder = () => {
         }).then(res => res.json())
             .then(result => {
                 console.log(result);
-                reset();
-                toast.success("Status Updated Successfully");
             })
+        toast.success("Status Updated Successfully");
     };
 
     useEffect(() => {

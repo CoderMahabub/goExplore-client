@@ -36,12 +36,11 @@ const ManageOrders = () => {
         }
     }
     return (
-        <div className="py-5">
+        <div className="table-responsive py-5">
             <h1 className="text-primary fw-bold pb-3"><u>Manage Orders</u><span className="fs-6 text-success">(<b>as Admin:</b> {user?.displayName})</span></h1>
             {(orders.length !== 0) ? <table className="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
                         <th scope="col">Customer Name</th>
                         <th scope="col">Customer Email</th>
                         <th scope="col">Customer Phone</th>
@@ -57,8 +56,7 @@ const ManageOrders = () => {
                     {
                         orders.map(booking => <tr
                             key={booking._id}>
-                            <th scope="row">{booking._id}</th>
-                            <td>{booking?.cName}</td>
+                            <td scope="row">{booking?.cName}</td>
                             <td>{booking?.cEmail}</td>
                             <td>{booking?.cPhone}</td>
                             <td>{booking?.pTitle}</td>
@@ -69,7 +67,7 @@ const ManageOrders = () => {
                             <td>
                                 <button onClick={() => handleDelete(booking?._id)} className="btn btn-danger me-1">{cancel}</button>
                                 <Link to={`/update/${booking?._id}`}>
-                                    <button className="btn btn-warning">{update}</button>
+                                    <button className="btn btn-warning">{update} Change Status</button>
                                 </Link>
                             </td>
                         </tr>)
