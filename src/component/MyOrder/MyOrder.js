@@ -9,6 +9,7 @@ const MyOrder = () => {
     const { user } = useAuth();
     const [orders, setOrders] = useState([]);
     const [isDeleted, setIsDeleted] = useState(null);
+
     useEffect(() => {
         fetch('https://serene-shore-87572.herokuapp.com/allOrders')
             .then(res => res.json())

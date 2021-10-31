@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import './Package.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faTags } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ const Package = ({ sPackage }) => {
         <div className="text-start">
             <Col>
                 <Card className="pb-2">
-                    <Card.Img className="hover-zoom" variant="top" src={pThumbnail} />
+                    <Card.Img className="img-fluid package-img" variant="top" src={pThumbnail} />
                     <Card.Body>
                         <Card.Title className="text-primary fs-2">{pTitle}</Card.Title>
                         <p className="text-secondary fs-6">{duration} {pDuration}</p>

@@ -14,7 +14,7 @@ const Header = () => {
     const { user, handleLogout } = useAuth();
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" sticky="top" className="border border-secondary border-top-0 border-start-0 border-end-0 bg-dark text-light fs-5">
+            <Navbar collapseOnSelect expand="lg" sticky="top" className="border border-secondary border-top-0 border-start-0 border-end-0 bg-dark text-light">
                 <Container>
                     <div className="d-flex align-items-center justify-content-center">
                         <Navbar.Brand as={HashLink} to="/home">
@@ -34,7 +34,7 @@ const Header = () => {
                             <>
                                 <Nav.Link className="text-light" as={HashLink} to="/myOrder">My Orders</Nav.Link>
                                 <Nav.Link className="text-light" as={HashLink} to="/manageAllOrders">Manage All Orders</Nav.Link>
-                                <Nav.Link className="text-light" as={HashLink} to="/addPackage">Add Package</Nav.Link>
+                                <Nav.Link className="text-light" as={HashLink} to="/addPackage">Manage Packages</Nav.Link>
                                 {(user.photoURL) && <img className="header-photo mx-2" src={user.photoURL} alt="user" />}
                                 <span className="fw-bold text-warning"> {user.displayName} </span>
                             </>}
